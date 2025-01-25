@@ -1,27 +1,50 @@
 weather_task:
   description: >
-    Based on provided city find what weather is.
+    Based on provided city, find what weather is. 
     City: {city}
   expected_output: >
     current temperature, maximum temperature, minimal temperature and related weather details in provided city.
 
-hotel_researcher_task:
+attractions_task:
   description: >
-    Based on provided city find best hotel in that city that exists.
+    Based on the user's point of interest, budget, and preferred weather, suggest interesting attractions. If the attraction is outdoors and the preferred weather differs from the current weather, provide a warning.
+    City: {city}
+    Point of interest: {point_of_interest}
+    Budget: {budget}
+    Preferred weather {preferred_weather}
+  expected_output: >
+    A few real attractions with cost in provided city.
+
+accommodation_task:
+  description: >
+    Based on the provided city, find the best existing accommodation that matches the user's budget and preferred accommodation type.
     City: {city}
     Budget: {budget}
+    Preferred accommodation: {preferred_accommodation}
   expected_output: >
-    Hotel name that you found and and price for one day.
+    A few real accommodations in the provided city with the cost per day.
 
-transport_agent_task:
+transport_task:
   description: >
-    Based on provided city find best transport option in that city to traveler without car.
+    Based on the provided city, find the best existing transportation that matches the user's budget and preferred transportation.
     City: {city}
+    Budget: {budget}
+    Preferred transportation {preferred_transportation}
   expected_output: >
-    Transport option that you found.
+    A few real transport options in the provided city with the cost per day
 
-sumerizer_task:
+summarizer_task:
   description: >
-    Based on information from hotel_researcher_task and transport_agent_task generate summary.
+     Based on the results from the weather, attractions, accommodation, and transportation agents, provide a summary that includes the key details for the provided city.
   expected_output: >
-    Hotel: - hotel form another agent, Transport: - transport from another agent.
+    Return in form like this:
+    Weather: current temperature, maximum temperature, minimum temperature, and related weather details from weather_agent.
+    List of five attractions with cost from attractions_agent.
+    List of five accommodations with cost per day from accommodation_agent.
+    Two transport options options from transport_agent.
+
+translator_task:
+  description: >
+    Translate the summary into the language specified by user in answer language. The content includes weather, attractions, accommodation, and transportation results.
+  expected_output: >
+    Return in the same form as you receive.

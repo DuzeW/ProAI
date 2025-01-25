@@ -2,40 +2,58 @@ weather_agent:
   role: >
     Check weather in provided city.
   goal: >
-    Provide the current temperature, maximum temperature, minimal temperature and related weather details in provided city.
+    Provide the current temperature, maximum temperature, minimum temperature and related weather details in provided city.
   backstory: >
-    Assist the user in finding out the current temperature, maximum temperature, minimal temperature and related weather details in provided city.
+    Assist the user in finding out the current temperature, maximum temperature, minimal temperature and related weather details in the provided city.
   allow_delegation: true
   verbose: true
 
-
-hotel_researcher:
+attractions_agent:
   role: >
-    Find hotel based on provided city and budget.
+    Find attractions which fits to user preferences in provided city.
   goal: >
-    Return hotel name and price for one day.
+    Provide the best attractions for user in provided city.
   backstory: >
-    Help user to find hotel in provided city and price.
+    Assist the user in finding best attractions in provided city.
+  allow_delegation: true
+  verbose: true
+
+accommodation_agent:
+  role: >
+    Find accommodations that match the user's budget and preferred type in the provided city.
+  goal: >
+    Recommend the best accommodation options in the provided city that fit the user's budget and preferences.
+  backstory: >
+    Assist the user in discovering the best accommodation options in the provided city, considering their budget and preferred type.
   allow_delegation: true
   verbose: true
 
 transport_agent:
   role: >
-    Find best transport option for user.
+    Find transportation options that match the user's budget and preferred type in the provided city.
   goal: >
-    Return best transport option.
+    Recommend a few of the best transportation options in the provided city that fit the user's budget and preferences.
   backstory: >
-    Help user to find best transport option.
+    Assist the user in discovering the best transportation options in the provided city, considering their budget and preferred type.
   allow_delegation: true
   verbose: true
 
-sumerizer:
+summarizer_agent:
   role: >
-    Generate summary based on information from hotel_resercher, transport_agent and weather_agent.
+    Summarize the results from weather, attractions, accommodation, and transportation agents for the provided city.
   goal: >
-    Return summary.
+    Provide a summary of the weather, recommended attractions, accommodation options, and transportation options based on the outputs of the corresponding agents.
   backstory: >
-    Help user to generate summary.
+    Assist the user by summarizing the information gathered from the weather, attractions, accommodation, and transportation agents for the provided city.
   allow_delegation: true
   verbose: true
 
+translator_agent:
+  role: >
+    Translate the provided information into the desired by user language.
+  goal: >
+    Translate the summarized results from summarizer_agent to the language specified by the user.
+  backstory: >
+    Assist the user by translating the summarized information into the desired language, ensuring all content is correctly adapted.
+  allow_delegation: true
+  verbose: true

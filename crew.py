@@ -27,6 +27,7 @@ class TravelingCrew():
             llm=self.openai_llm,
             tools=[WeatherTool()],
         )
+
     @task
     def weather_task(self) -> Task:
         return Task(
@@ -35,17 +36,31 @@ class TravelingCrew():
         )
 
     @agent
-    def hotel_researcher(self) -> Agent:
+    def attractions_agent(self) -> Agent:
         return Agent(
-            config=self.agents_config['hotel_researcher'],
+            config=self.agents_config['attractions_agent'],
+            llm=self.openai_llm,
+        )
+
+    @task
+    def attractions_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['attractions_task'],
+            agent=self.attractions_agent(),
+        )
+
+    @agent
+    def accommodation_agent(self) -> Agent:
+        return Agent(
+            config=self.agents_config['accommodation_agent'],
             llm = self.openai_llm
         )
 
     @task
-    def hotel_researcher_task(self) -> Task:
+    def accommodation_task(self) -> Task:
         return Task(
-            config=self.tasks_config['hotel_researcher_task'],
-            agent=self.hotel_researcher()
+            config=self.tasks_config['accommodation_task'],
+            agent=self.accommodation_agent()
         )
 
     @agent
@@ -56,24 +71,38 @@ class TravelingCrew():
         )
 
     @task
-    def transport_agent_task(self) -> Task:
+    def transport_task(self) -> Task:
         return Task(
-            config=self.tasks_config['transport_agent_task'],
+            config=self.tasks_config['transport_task'],
             agent=self.transport_agent()
         )
 
     @agent
-    def sumerizer(self) -> Agent:
+    def summarizer_agent(self) -> Agent:
         return Agent(
-            config=self.agents_config['sumerizer'],
+            config=self.agents_config['summarizer_agent'],
             llm = self.openai_llm
         )
 
     @task
-    def sumerizer_task(self) -> Task:
+    def summarizer_task(self) -> Task:
         return Task(
-            config=self.tasks_config['sumerizer_task'],
-            agent=self.sumerizer()
+            config=self.tasks_config['summarizer_task'],
+            agent=self.summarizer_agent()
+        )
+
+    @agent
+    def translator_agent(self) -> Agent:
+        return Agent(
+            config=self.agents_config['translator_agent'],
+            llm = self.openai_llm
+        )
+
+    @task
+    def translator_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['translator_task'],
+            agent=self.translator_agent()
         )
 
     @crew

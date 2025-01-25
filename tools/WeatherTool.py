@@ -15,7 +15,6 @@ class WeatherTool(BaseTool):
     def _run(self, city:str) -> str:
         """Fetches weather information for the given location."""
 
-
         handler = logging.StreamHandler()
         formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
         handler.setFormatter(formatter)
