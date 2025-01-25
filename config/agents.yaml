@@ -1,0 +1,41 @@
+weather_agent:
+  role: >
+    Check weather in provided city.
+  goal: >
+    Provide the current temperature, maximum temperature, minimal temperature and related weather details in provided city.
+  backstory: >
+    Assist the user in finding out the current temperature, maximum temperature, minimal temperature and related weather details in provided city.
+  allow_delegation: true
+  verbose: true
+
+
+hotel_researcher:
+  role: >
+    Find hotel based on provided city and budget.
+  goal: >
+    Return hotel name and price for one day.
+  backstory: >
+    Help user to find hotel in provided city and price.
+  allow_delegation: true
+  verbose: true
+
+transport_agent:
+  role: >
+    Find best transport option for user.
+  goal: >
+    Return best transport option.
+  backstory: >
+    Help user to find best transport option.
+  allow_delegation: true
+  verbose: true
+
+sumerizer:
+  role: >
+    Generate summary based on information from hotel_resercher, transport_agent and weather_agent.
+  goal: >
+    Return summary.
+  backstory: >
+    Help user to generate summary.
+  allow_delegation: true
+  verbose: true
+

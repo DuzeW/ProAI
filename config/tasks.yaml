@@ -1,0 +1,27 @@
+weather_task:
+  description: >
+    Based on provided city find what weather is.
+    City: {city}
+  expected_output: >
+    current temperature, maximum temperature, minimal temperature and related weather details in provided city.
+
+hotel_researcher_task:
+  description: >
+    Based on provided city find best hotel in that city that exists.
+    City: {city}
+    Budget: {budget}
+  expected_output: >
+    Hotel name that you found and and price for one day.
+
+transport_agent_task:
+  description: >
+    Based on provided city find best transport option in that city to traveler without car.
+    City: {city}
+  expected_output: >
+    Transport option that you found.
+
+sumerizer_task:
+  description: >
+    Based on information from hotel_researcher_task and transport_agent_task generate summary.
+  expected_output: >
+    Hotel: - hotel form another agent, Transport: - transport from another agent.

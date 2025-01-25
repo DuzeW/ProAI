@@ -1,0 +1,14 @@
+## Instalacja zależności
+
+Aby zainstalować wszystkie zależności projektu, użyj poniższej komendy:
+
+```bash
+pip install -r requirements.txt
+
+Dodaj włąsne api key w pliku .env wymagane:
+GROQ_KEY = ""
+OPENAI_KEY = ""
+CLAUDE_API_KEY = ""
+WEATHER_API_KEY = ""
+
+uruchomić main.py
