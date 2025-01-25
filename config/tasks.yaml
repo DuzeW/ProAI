@@ -7,17 +7,16 @@ weather_task:
 
 attractions_task:
   description: >
-    Based on the user's point of interest, budget, and preferred weather, suggest interesting attractions. If the attraction is outdoors and the preferred weather differs from the current weather, provide a warning.
+    Based on the user's point of interest and budget, suggest interesting attractions.
     City: {city}
     Point of interest: {point_of_interest}
     Budget: {budget}
-    Preferred weather {preferred_weather}
   expected_output: >
     A few real attractions with cost in provided city.
 
 accommodation_task:
   description: >
-    Based on the provided city, find the best existing accommodation that matches the user's budget and preferred accommodation type.
+    Based on the provided city, find the best existing accommodation that matches the user's budget and preferred accommodation.
     City: {city}
     Budget: {budget}
     Preferred accommodation: {preferred_accommodation}
@@ -26,9 +25,8 @@ accommodation_task:
 
 transport_task:
   description: >
-    Based on the provided city, find the best existing transportation that matches the user's budget and preferred transportation.
+    Based on the provided city, find the best existing transportation that matches the user's preferred transportation.
     City: {city}
-    Budget: {budget}
     Preferred transportation {preferred_transportation}
   expected_output: >
     A few real transport options in the provided city with the cost per day
@@ -47,4 +45,4 @@ translator_task:
   description: >
     Translate the summary into the language specified by user in answer language. The content includes weather, attractions, accommodation, and transportation results.
   expected_output: >
-    Return in the same form as you receive.
+    Return translated text in the same form as you receive.
