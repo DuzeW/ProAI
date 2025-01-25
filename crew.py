@@ -24,7 +24,6 @@ class TravelingCrew():
 
     def _log_metrics(self, task_name, agent_name, model_name, start_time, result, success, error_count):
         response_size = len(str(result)) if success else 0
-        api_cost = response_size  # Możesz dodać obliczenie kosztu na podstawie tokenów
         execution_time = time.time() - start_time
 
         self.metrics_logger.log(
@@ -34,7 +33,6 @@ class TravelingCrew():
             response_time=execution_time,
             success=success,
             response_size=response_size,
-            api_cost=api_cost,
             error_count=error_count,
             details=result
         )
