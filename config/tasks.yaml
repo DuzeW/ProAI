@@ -33,7 +33,7 @@ transport_task:
 
 summarizer_task:
   description: >
-     Based on the results from the weather, attractions, accommodation, and transportation agents, provide a summary that includes the key details for the provided city.
+    Based on the results from the weather, attractions, accommodation, and transportation agents, provide a summary that includes the key details for the provided city.
   expected_output: >
     Return in form like this:
     Weather: current temperature, maximum temperature, minimum temperature, and related weather details from weather_agent.

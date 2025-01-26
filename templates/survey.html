@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankieta Podróż</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="loading" class="loading">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Pobieram rekomendacje...</p>
+        </div>
+    </div>
+
+    <div class="heading">
+        <h1 id="head">Ankieta Podróży</h1>
+        <h2 id="subheading">Wypełnij ankietę i otrzymaj spersonalizowane rekomendacje podróżnicze!</h2>
+    </div>
+    <form id="travelForm">
+        <div id="content1">
+            <label>Miasto</label> <br><br>
+            <input type="text" id="city" name="city" placeholder="Wpisz docelowe miasto" class="box" required> <br><br>
+            <label>Język</label> <br><br>
+        
+        <div id="option1">
+            <select id="answer_language" name="answer_language" required>
+              <option name="Wybierz preferowany język">Wybierz preferowany język</option>
+              <option value="Polski">Polski</option>
+              <option value="Angielski">Angielski</option>
+              <option value="Japoński">Japoński</option>   
+            </select>
+        </div>
+        <br><br>
+        <label id="head1">Jaki masz budżet?</label><br><br>
+        <input type="radio" id="budget" name="budget" class="larger">&nbsp&nbsp&nbspWysoki<br><br>
+        <input type="radio" id="budget" name="budget" class="larger">&nbsp&nbsp&nbspŚredni<br><br>
+        <input type="radio" id="budget" name="budget" class="larger">&nbsp&nbsp&nbspNiski<br><br><br>
+        <label>Jaki rodzaj noclegu Cię interesuje?</label> <br>
+        
+        <div id="option2">
+            <select id="preferred_accommodation" name="preferred_accommodation" required>
+                <option value="Wybierz nocleg">Wybierz nocleg</option> 
+                <option value="Hotel">Hotel</option>
+                <option value="Apartament">Apartament</option>
+                <option value="Hostel">Hostel</option>
+                <option value="Camping">Camping</option> <br><br>
+            </select>
+        </div>
+        <br><br>
+        <label id="head2">Jakie są Twoje preferowane atrakcje?</label><br>
+        <div id="option3">
+            <select id="point_of_interest" name="point_of_interest" required>
+                <option value="Wybierz atrakcje">Wybierz atrakcje</option> 
+                <option value="nature">Przyrodnicze</option>
+                <option value="culture">Kulturowe</option>
+                <option value="entertainment">Rozrywkowe</option>
+                <option value="historical">Historyczne</option>
+                <option value="sports">Sportowe</option>
+            </select>
+        </div>
+        <br><br><br>
+        <label id="head3">Jaki jest Twój preferowany środek transportu?</label><br><br>
+        <input type="radio" id="preferred_transportation" name="preferred_transportation" class="larger">&nbsp&nbsp&nbspPubliczny<br><br>
+        <input type="radio" id="preferred_transportation" name="preferred_transportation" class="larger">&nbsp&nbsp&nbspSamochód<br><br>
+        <input type="radio" id="preferred_transportation" name="preferred_transportation" class="larger">&nbsp&nbsp&nbspRower<br><br><br>
+        <br><br>
+        <button type="submit"><h3>Znajdź propozycje</h3></button>
+    </form>
+   
+    <div id="results" style="margin-top: 20px; padding: 20px; display: none;">
+        <h2>Proponowane atrakcje:</h2> <br><br>
+        <ul id="attractionsList"></ul> <br><br>
+
+        <h2>Transport:</h2> <br><br>
+        <ul id="transportList"></ul> <br><br>
+
+        <h2>Pogoda:</h2> <br><br>
+        <div id="weatherInfo"></div> <br><br>
+
+        <h2>Noclegi:</h2> <br><br>
+        <ul id="accommodationList"></ul> <br><br>
+
+    </div>
+  
+    <script>
+        document.getElementById('travelForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            document.getElementById('loading').style.display = 'flex';
+
+            const formData = {
+                city: document.getElementById('city').value,
+                answer_language: document.getElementById('answer_language').value,
+                budget: document.getElementById('budget').value,
+                preferred_transportation: document.getElementById('preferred_transportation').value,
+                point_of_interest: document.getElementById('point_of_interest').value,
+                preferred_accommodation: document.getElementById('preferred_accommodation').value
+            };
+
+            fetch('http://localhost:5000/submit_survey', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('loading').style.display = 'none';
+
+                console.log('Received data:', data);  //debugowanie
+
+                // Atrakcje
+                const attractionsList = document.getElementById('attractionsList');
+                attractionsList.innerHTML = '';
+                if (data.attractions) {
+                    data.attractions.split('\n').forEach(attraction => {
+                        const li = document.createElement('li');
+                        li.textContent = attraction;
+                        attractionsList.appendChild(li);
+                    });
+                } else {
+                    const li = document.createElement('li');
+                    li.textContent = 'Brak danych o atrakcjach.';
+                    attractionsList.appendChild(li);
+                }
+
+                // Transport
+                const transportList = document.getElementById('transportList');
+                transportList.innerHTML = '';
+                if (data.transport) {
+                    data.transport.split('\n').forEach(option => {
+                        const li = document.createElement('li');
+                        li.textContent = option;
+                        transportList.appendChild(li);
+                    });
+                } else {
+                    const li = document.createElement('li');
+                    li.textContent = 'Brak danych o transporcie.';
+                    transportList.appendChild(li);
+                }
+
+                // Pogoda
+                const weatherInfo = document.getElementById('weatherInfo');
+                if (data.weather) {
+                    weatherInfo.textContent = data.weather;
+                } else {
+                    weatherInfo.textContent = 'Brak danych o pogodzie.';
+                }
+
+                // Noclegi
+                const accommodationList = document.getElementById('accommodationList');
+                accommodationList.innerHTML = '';
+                if (data.accommodation) {
+                    data.accommodation.split('\n').forEach(option => {
+                        const li = document.createElement('li');
+                        li.textContent = option;
+                        accommodationList.appendChild(li);
+                    });
+                } else {
+                    const li = document.createElement('li');
+                    li.textContent = 'Brak danych o noclegach.';
+                    accommodationList.appendChild(li);
+                }
+
+                document.getElementById('results').style.display = 'block';
+            })
+            .catch((error) => {
+                document.getElementById('loading').style.display = 'none';
+                console.error('Error:', error);
+                alert('Wystąpił błąd podczas pobierania rekomendacji.');
+            });
+        });
+    </script>
+</body>
+</html>
