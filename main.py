@@ -14,12 +14,14 @@ def submit_survey():
     data = request.json
     inputs = {
         "city": data.get("city"),
-        "answer_language": data.get("answer_language"),
+        "preferred_language": data.get("preferred_language"),
         "budget": data.get("budget"),
         "preferred_transportation": data.get("preferred_transportation"),
         "point_of_interest": data.get("point_of_interest"),
         "preferred_accommodation": data.get("preferred_accommodation"),
+        "departure_date": data.get("departure_date")
     }
+
     response = TravelingCrew().crew().kickoff(inputs=inputs)
     
  

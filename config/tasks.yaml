@@ -43,6 +43,6 @@ summarizer_task:
 
 translator_task:
   description: >
-    Translate the summary into the language specified by user in answer language. The content includes weather, attractions, accommodation, and transportation results.
+    Translate the summary into the user language specified by user in preferred language. The content includes weather, attractions, accommodation, and transportation results.
   expected_output: >
     Return translated text in the same form as you receive.
