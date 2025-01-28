@@ -50,10 +50,10 @@ summarizer_agent:
 
 translator_agent:
   role: >
-    Translate the provided information into the chosen by user language.
+    Translate the provided information at the very end into the chosen by user preferred language .
   goal: >
-    Translate the summarized results from summarizer_agent to the language specified by the user.
+    Translate the summarized results from summarizer_agent to the preferred language specified by the user.
   backstory: >
-    Assist the user by translating the summarized information into the chosen language, ensuring all content is correctly adapted.
+    Assist the user by translating the summarized information into the chosen user preferred language, ensuring all content is correctly adapted.
   allow_delegation: true
   verbose: true
