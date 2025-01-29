@@ -10,6 +10,8 @@ GROQ_KEY = ""
 OPENAI_KEY = ""
 CLAUDE_API_KEY = ""
 WEATHER_API_KEY = ""
+RAPIDAPI_KEY = "'
+GOOGLE_PLACES_API_KEY = ""
 
 uruchomić main.py
 
@@ -17,8 +19,8 @@ Specyfikacja projektu
 
 Projekt zawiera agentów:
 - Agent pogodowy używa toola weather_task aby dostarczyć zachmurzenie, opady, prędkość wiatru, temperaturę maksymalną oraz minimalną dla danego dnia
-- Agent atrakcyjny attractions_agent używa toola ... aby ...
-- Agent akomodacyjny attractions_task używa toola ... aby ...
-- Agent transportowy transport_agent używa toola ... aby ...
+- Agent atrakcyjny attractions_agent używa toola AttractionTool aby za pomocą api googla odnaleźć interesujące atrakcje
+- Agent akomodacyjny accommodation_agent używa toola HotelTool() aby znaleźć hotele oraz inne zakwaterowania.
+- Agent transportowy transport_agent używa toola TransportTool() aby odnaleźć środki komunikacji w mieście
 - Agent summarizer_agent sumuje on oraz układa odpowiedź
-- Agent tłumaczący używa toola ... aby ...
+
