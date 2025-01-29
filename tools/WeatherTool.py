@@ -10,7 +10,8 @@ from urllib.parse import quote
 def save_coordinates_to_file(lat, lon, filename="coordinates.txt"):
     try:
         with open(filename, 'w') as f:
-            f.write(f"Latitude: {lat}\nLongitude: {lon}")
+            coordinates = 'circle:' + str(lon) + ',' + str(lat) + ',' + str("2000")
+            f.write(f"cord: {coordinates}")
         print(f"Coordinates saved to {filename}")
     except Exception as e:
         print(f"Error saving coordinates: {str(e)}")

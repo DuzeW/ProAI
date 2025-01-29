@@ -15,6 +15,13 @@ logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)
 
 
+def read_coordinates_from_file(filename="coordinates.txt"):
+    with open(filename, 'r') as file:
+        lines = file.readlines()
+        cord = str(lines[0].split(": ")[1])
+    return cord
+
+
 class HotelTool(BaseTool):
     name:str = "Hotel Tool"
     description:str = "Hotel tool helps you find hotels"
@@ -27,10 +34,13 @@ class HotelTool(BaseTool):
         if not self.api_key:
             return str({"error": "Missing API key for hotels"})
 
+
+
+        coordinates = read_coordinates_from_file()
         url = "https://api.geoapify.com/v2/places"
         params = {
             'categories': 'accommodation.hotel',
-            'filter': 'rect:20.94752376937708,52.266861892301705,21.070476230619736,52.19628',
+            'filter': coordinates,
             'limit': '5',
             'apiKey': self.api_key,
         }
