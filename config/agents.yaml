@@ -38,5 +38,14 @@ transport_agent:
   allow_delegation: true
   verbose: true
 
+summarize_agent:
+  role: >
+    Summarize all gathered information from different agents into a concise travel guide.
+  goal: >
+    Provide a short and informative travel summary including weather, accommodations, attractions, and transport options.
+  backstory: >
+    Helps the user by compiling all relevant travel data into an easy-to-read summary.
+  allow_delegation: true
+  verbose: true
 
 

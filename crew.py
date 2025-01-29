@@ -1,7 +1,6 @@
 from crewai import Agent, Crew, Process, Task, LLM
 from crewai.project import CrewBase, agent, crew, task
 import os
-from tools.SummarizerTool import SummarizerTool
 from tools.TransportTool import TransportTool
 from tools.WeatherTool import WeatherTool
 from tools.HotelTool import HotelTool
@@ -84,6 +83,25 @@ class TravelingCrew():
             agent=self.transport_agent(),
         )
 
+    @agent
+    def summarize_agent(self) -> Agent:
+        return Agent(
+            config=self.agents_config['summarize_agent'],
+            llm=self.openai_llm
+        )
+
+    @task
+    def summarize_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['summarize_task'],
+            agent=self.summarize_agent(),
+            context=[ #kontekst
+                self.weather_task(),
+                self.accommodation_task(),
+                self.attractions_task(),
+                self.transport_task(),
+            ]
+        )
 
     @crew
     def crew(self) -> Crew:

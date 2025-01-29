@@ -7,9 +7,8 @@ weather_task:
 
 accommodation_task:
   description: >
-    Based on the provided city, find the best existing accommodation that matches the user's preferred accommodation. 
+    Based on the provided city, find the best existing accommodation that matches the user's. 
     City: {city}
-    Preferred accommodation: {preferred_accommodation}
   expected_output: >
     A few real accommodations in the provided city with the cost per day.
 
@@ -27,4 +26,10 @@ transport_task:
   expected_output: >
     A few real transport options in the provided city.
 
+summarize_task:
+  description: >
+    Summarize all information retrieved about the provided city, including weather, accommodations, attractions, and transport.
+    City: {city}
+  expected_output: >
+    A concise travel summary containing weather details, top accommodations, top attractions, and transport options.
 
