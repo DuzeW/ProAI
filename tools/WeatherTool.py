@@ -6,6 +6,17 @@ from crewai.tools import BaseTool
 from dotenv import load_dotenv
 from urllib.parse import quote
 
+
+def save_coordinates_to_file(lat, lon, filename="coordinates.txt"):
+    try:
+        with open(filename, 'w') as f:
+            f.write(f"Latitude: {lat}\nLongitude: {lon}")
+        print(f"Coordinates saved to {filename}")
+    except Exception as e:
+        print(f"Error saving coordinates: {str(e)}")
+
+
+
 class WeatherTool(BaseTool):
     name:str = "WeatherTool"
     description:str = "Give info about weather conditions"
@@ -41,6 +52,9 @@ class WeatherTool(BaseTool):
                 temp_min = data['main']['temp_min']
                 wind_speed = data['wind']['speed']
                 main_weather = data['weather'][0]['main']
+                lat = data['coord']['lat']
+                lon = data['coord']['lon']
+                save_coordinates_to_file(lat, lon)
 
                 return str({
                     "max_temperature": temp_max,
