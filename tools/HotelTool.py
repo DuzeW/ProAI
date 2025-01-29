@@ -5,9 +5,6 @@ from crewai.tools import BaseTool
 from dotenv import load_dotenv
 from pydantic import BaseModel, ValidationError
 
-
-
-# Load environment variables
 load_dotenv()
 
 # Set up logging

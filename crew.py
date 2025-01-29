@@ -1,8 +1,11 @@
 from crewai import Agent, Crew, Process, Task, LLM
 from crewai.project import CrewBase, agent, crew, task
 import os
+from tools.SummarizerTool import SummarizerTool
+from tools.TransportTool import TransportTool
 from tools.WeatherTool import WeatherTool
 from tools.HotelTool import HotelTool
+from tools.AttractionTool import AttractionTool
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -49,6 +52,36 @@ class TravelingCrew():
         return Task(
             config=self.tasks_config['accommodation_task'],
             agent=self.accommodation_agent()
+        )
+
+    @agent
+    def attractions_agent(self) -> Agent:
+        return Agent(
+            config=self.agents_config['attractions_agent'],
+            llm=self.openai_llm,
+            tools=[AttractionTool()]
+        )
+
+    @task
+    def attractions_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['attractions_task'],
+            agent=self.attractions_agent(),
+        )
+
+    @agent
+    def transport_agent(self) -> Agent:
+        return Agent(
+            config=self.agents_config['transport_agent'],
+            llm=self.openai_llm,
+            tools=[TransportTool()]
+        )
+
+    @task
+    def transport_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['transport_task'],
+            agent=self.transport_agent(),
         )
 
 

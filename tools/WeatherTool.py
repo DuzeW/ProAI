@@ -1,3 +1,4 @@
+
 import requests
 import os
 import logging
@@ -76,6 +77,3 @@ class WeatherTool(BaseTool):
         except Exception as e:
             self.logger.error(f"Error while fetching weather: {str(e)}")
             return str({"error": "Error while fetching weather information"})
-
-
-

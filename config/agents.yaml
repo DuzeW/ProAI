@@ -10,11 +10,33 @@ weather_agent:
 
 accommodation_agent:
   role: >
-    Find accommodations that match the user's budget and preferred type accommodations in the provided city.
+    Find accommodations that match the user's preferred type accommodations in the provided city.
   goal: >
-    Recommend the best accommodation options in the provided city that fit the user's budget and accommodations preferences.
+    Recommend the best accommodation options in the provided city that fit the user's accommodations preferences.
   backstory: >
-    Assist the user in discovering good accommodation options in the provided city, considering their budget and preferred type.
+    Help the user in discovering good accommodation options in the provided city, considering preferred type.
   allow_delegation: true
   verbose: true
+
+attractions_agent:
+  role: >
+    Find popular attractions for user in provided city
+  goal: >
+    Provide the best attractions for user in provided city.
+  backstory: >
+    Help the user in finding best attractions in provided city.
+  allow_delegation: true
+  verbose: true
+
+transport_agent:
+  role: >
+    Find transportation options in the provided city.
+  goal: >
+    Recommend a few of the best transportation options in the provided city that fit the user.
+  backstory: >
+    Assist the user in discovering the best transportation options in the provided city.
+  allow_delegation: true
+  verbose: true
+
+
 
