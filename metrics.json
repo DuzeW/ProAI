@@ -1,0 +1,16 @@
+{
+    "model": "gpt-4o-mini",
+    "execution_time": 44.94,
+    "total_tokens_used": 484,
+    "tasks": {
+        "summary": {
+            "response": "**Gdansk Travel Summary**\n\n**Weather:**\n- Current Temperature: 8.5\u00b0C\n- Maximum Temperature: 9.53\u00b0C\n- Minimum Temperature: 7.58\u00b0C\n- Weather Detail: Mainly cloudy with a wind speed of 5.66 m/s.\n\n**Accommodations:**\n1. **Fama Residence**\n   - Website: [famagdansk.pl](https://www.famagdansk.pl/)\n   - Stars: Not rated\n\n2. **Holiday Inn Gda\u0144sk - City Centre**\n   - Website: [ihg.com](https://www.ihg.com/holidayinn/hotels/us/en/gdansk/gdncc/hoteldetail)\n   - Stars: Not rated\n\n3. **Kobza Haus**\n   - Website: [kobzahaus.pl](http://www.kobzahaus.pl)\n   - Stars: Not rated\n\n4. **Best Western Bonum Hotel**\n   - Website: [hotelbonum.pl](https://www.hotelbonum.pl/)\n   - Stars: 3\n\n5. **Bonum**\n   - Website: [hotelbonum.pl](https://www.hotelbonum.pl/)\n   - Stars: Not rated\n\n**Top Attractions:**\n1. **Polish Baltic Fr\u00e9d\u00e9ric Chopin Philharmonic**\n   - Rating: 4.8 \n   - Address: O\u0142owianka 1, Gda\u0144sk\n\n2. **Bazylika Mariacka Wniebowzi\u0119cia Naj\u015bwi\u0119tszej Maryi Panny w Gda\u0144sku**\n   - Rating: 4.7 \n   - Address: Podkramarska 5, Gda\u0144sk\n\n3. **Brama Z\u0142ota**\n   - Rating: 4.7 \n   - Address: D\u0142uga 1, Gda\u0144sk\n\n4. **D\u0142ugi Targ**\n   - Rating: 4.8 \n   - Address: D\u0142uga, Gda\u0144sk\n\n5. **Artus Court**\n   - Rating: 4.6 \n   - Address: D\u0142ugi Targ 43-44, Gda\u0144sk\n\n**Transport Options:**\n1. **Subway**: Gdansk has regional train services connecting nearby areas.\n2. **Bus**: An extensive and reliable bus network covers many areas of the city.\n3. **Train**: The main train station connects Gdansk to other major Polish cities.\n4. **Taxi**: Easily available for street hailing or booking via apps.\n5. **Tram**: An efficient tram system services key parts of the city.\n6. **Airport**: Gdansk Lech Wa\u0142\u0119sa Airport is about 12 km from the city center with various transport options.\n7. **Car Rental**: Available at the airport and throughout the city for flexible travel.\n8. **Bicycle**: Bike-friendly city with dedicated lanes and rental options.\n\nEnjoy your visit to Gdansk!",
+            "execution_time": 43.48,
+            "tokens_used": 484,
+            "correctness": "Incorrect",
+            "ragas_scores": {
+                "error": "'DataFrame' object has no attribute 'get_sample_type'"
+            }
+        }
+    }
+}
